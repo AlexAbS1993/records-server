@@ -1,0 +1,8 @@
+{
+  "name": "records_server",
+  "version": "0.1.0",
+  "description": "Это серверное приложение для программы records, куда пользователи могут заносить свои главные рекорды и сравнивать их с рекордами других игроков",
+  "main": "index.js",
+  "author": "Alex Abetov <abetovalex93@gmail.com>",
+  "license": "MIT"
+}
