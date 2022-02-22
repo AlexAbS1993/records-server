@@ -6,7 +6,8 @@
 .development.env
 .test.env
 
-# production
+# production build
 /build
 
+# development build
 /dev
