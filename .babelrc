@@ -5,5 +5,13 @@
       {
         "targets": "> 0.25%, not dead"
       }
-    ]]
+    ]
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "alias": {
+        "@entities": "./src/entities"
+      }
+    }]
+  ]
 }
