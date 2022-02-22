@@ -4,5 +4,25 @@
   "description": "Это серверное приложение для программы records, куда пользователи могут заносить свои главные рекорды и сравнивать их с рекордами других игроков",
   "main": "index.js",
   "author": "Alex Abetov <abetovalex93@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "",
+    "dev": "npx babel src --extensions \".ts\" --out-dir dev",
+    "build": "npx babel src --extensions \".ts\" --out-dir build"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-typescript": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.5"
+  }
 }
