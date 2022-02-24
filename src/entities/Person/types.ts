@@ -1,5 +1,5 @@
 export interface IRecordListGetter {
-    getByUserId: (userId: string) => null
+    getByUserId: (userId: string, filters: any) => null
 }
 
 export type PersonDataType = {

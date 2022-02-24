@@ -10,8 +10,14 @@ export class Person {
         this._name = data.name
         this._lastName = data.lastName
     }
-    getRecordListFromPack(recordListGetter: IRecordListGetter) {
-        this._recordList = recordListGetter.getByUserId(this._id)
+    callAboutNewRecord(record: unknown, instation: any) {
+        instation.registration(record, this._id)
+    }
+    callAboutUpdateRecord(record: unknown, instation: any) {
+        instation.updateRecord(record, this._id)
+    }
+    getRecordListFromPack(recordListGetter: IRecordListGetter, filters: any = {}) {
+        this._recordList = recordListGetter.getByUserId(this._id, filters)
     }
     get recordList() {
         return this._recordList
