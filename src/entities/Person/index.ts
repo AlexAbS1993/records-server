@@ -18,6 +18,7 @@ export class Person {
     }
     getRecordListFromPack(recordListGetter: IRecordListGetter, filters: any = {}) {
         this._recordList = recordListGetter.getByUserId(this._id, filters)
+        return this._recordList
     }
     get recordList() {
         return this._recordList
