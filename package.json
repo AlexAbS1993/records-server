@@ -6,7 +6,7 @@
   "author": "Alex Abetov <abetovalex93@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test DOTENV_CONFIG_PATH=.test.env jest",
     "start": "",
     "dev": "node dev/index",
     "build": "npx babel src --extensions \".ts\" --out-dir build",
@@ -15,7 +15,10 @@
     "watch:dev": "npx babel src --extensions \".ts\" --out-dir dev --watch"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.17.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",

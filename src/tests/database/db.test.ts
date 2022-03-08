@@ -1,5 +1,8 @@
 import { Database } from './../../database/index';
 import 'ts-jest'
+import { Dialect, Model, ModelCtor, Sequelize } from 'sequelize';
+import 'dotenv/config'
+import { fakeModels } from './fakeModels';
 
 describe("База данных создается и использует singletone", () => {
     afterEach(() => {
@@ -16,5 +19,35 @@ describe("База данных создается и использует singl
     })
     test("Удаляет инстанс при вызове метода", () => {
         expect(Database.getInstance()).toBeNull()
+    })
+})
+
+describe("База данных подключается", () => {
+    let seq: Sequelize
+    let user: ModelCtor<Model<any, any>>
+    beforeAll(() => {
+        seq = new Sequelize(process.env.dbName as string, process.env.dbUser as string, process.env.dbPsw as string, {
+            host: 'localhost',
+            dialect: 'postgres'
+        })
+        user = fakeModels(seq).User
+    })
+    beforeEach(async () => {
+        await user.sync({
+            force: true
+        })
+    })
+    afterEach(() => {
+        Database.deleteInstance()
+    })
+    test("Подключение работает исправно", async () => {
+        try {
+            await seq.authenticate()
+            console.log("Test DB has succesfully connected")
+        }
+        catch (e: any) {
+            console.log(e.message)
+        }
+        expect(seq instanceof Sequelize).toBe(true)
     })
 })

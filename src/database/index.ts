@@ -1,9 +1,8 @@
-export class Database {
-    private _db: any
+export class Database<DB> {
     protected static singletone: any | null = null
-    constructor(db: any) {
+    constructor(private _db: DB) {
         if (Database.singletone === null) {
-            this._db = db
+            this._db = _db
             Database.singletone = this
             return
         }
