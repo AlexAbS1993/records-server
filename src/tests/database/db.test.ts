@@ -36,6 +36,7 @@ describe("База данных подключается", () => {
         await user.sync({
             force: true
         })
+        await seq.authenticate()
     })
     afterEach(() => {
         Database.deleteInstance()
@@ -49,5 +50,26 @@ describe("База данных подключается", () => {
             console.log(e.message)
         }
         expect(seq instanceof Sequelize).toBe(true)
+    })
+    test("Подключение создает запись и находит её", async () => {
+        await user.create({
+            name: 'Alex'
+        })
+        let alexUser = await user.findOne({
+            where: {
+                name: "Alex"
+            }
+        })
+        expect(alexUser).toBeDefined()
+        //@ts-ignore
+        expect(alexUser.name).toBe("Alex")
+    })
+    test("Если записи нет, то подключение возвращает пустой объект", async () => {
+        let nullUser = await user.findOne({
+            where: {
+                name: 'kuku'
+            }
+        })
+        expect(nullUser).toBeNull()
     })
 })
