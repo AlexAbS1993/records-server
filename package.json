@@ -12,7 +12,8 @@
     "build": "npx babel src --extensions \".ts\" --out-dir build",
     "devstart": "npx babel src --extensions \".ts\" --out-dir dev && cross-env NODE_ENV=development DOTENV_CONFIG_PATH=.development.env node dev/index",
     "watch:devstart": "cross-env NODE_ENV=development DOTENV_CONFIG_PATH=.development.env nodemon dev/index",
-    "watch:dev": "npx babel src --extensions \".ts\" --out-dir dev --watch"
+    "watch:dev": "npx babel src --extensions \".ts\" --out-dir dev --watch",
+    "test_start": "npx babel src --extensions \".ts\" --out-dir dev && cross-env NODE_ENV=test DOTENV_CONFIG_PATH=.test.env node dev/index"
   },
   "dependencies": {
     "express": "^4.17.3",

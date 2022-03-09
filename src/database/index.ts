@@ -1,7 +1,10 @@
 export class Database<DB> {
     protected static singletone: any | null = null
-    constructor(private _db: DB) {
+    constructor(private _db?: DB) {
         if (Database.singletone === null) {
+            if (!_db) {
+                throw new Error("Необходима дб")
+            }
             this._db = _db
             Database.singletone = this
             return
