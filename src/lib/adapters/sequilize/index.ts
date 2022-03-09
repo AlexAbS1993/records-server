@@ -1,6 +1,7 @@
+import { DatabaseAdapterInterface } from './../../../interfaces/DatabaseAdapterInterface';
 import { Sequelize } from 'sequelize';
-export class SequlizeAdapter {
-    db: Sequelize
+export class SequlizeAdapter implements DatabaseAdapterInterface<Sequelize> {
+    public db: Sequelize
     constructor(db: Sequelize) {
         this.db = db
     }
@@ -18,5 +19,8 @@ export class SequlizeAdapter {
         catch (e) {
             console.log('Не подключились')
         }
+    }
+    defineModel() {
+
     }
 }
