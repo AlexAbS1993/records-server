@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize, DataTypes } from 'sequelize';
 import { Application } from './app';
 import 'dotenv/config'
 import { Database } from './database';
@@ -10,4 +10,13 @@ new Application<SequlizeAdapter>()
         host: 'localhost',
         dialect: 'postgres'
     }
-    )))).db.connect()
+    ))))
+
+Application.getDB<SequlizeAdapter>().db.define("User", {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    }
+})
+Application.getDB<SequlizeAdapter>().connect(process.env.NODE_ENV as "development" | "test")

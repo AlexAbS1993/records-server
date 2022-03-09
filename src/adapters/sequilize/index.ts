@@ -4,9 +4,15 @@ export class SequlizeAdapter {
     constructor(db: Sequelize) {
         this.db = db
     }
-    connect() {
+    connect(mode: "development" | "production" | "test") {
         try {
             this.db.authenticate()
+            if (mode === 'test') {
+                this.db.sync({ force: true })
+            }
+            if (mode === 'development') {
+                this.db.sync({ alter: true })
+            }
             console.log("Подключение успешно завершено")
         }
         catch (e) {

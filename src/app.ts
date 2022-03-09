@@ -17,7 +17,7 @@ export class Application<DBtype> {
     get db() {
         return this._db
     }
-    static getDB() {
+    static getDB<DBtype>(): DBtype {
         if (Application.singletone._db === null) {
             throw new Error("База данных не подключена")
         }
