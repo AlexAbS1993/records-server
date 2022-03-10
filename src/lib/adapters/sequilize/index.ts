@@ -5,22 +5,19 @@ export class SequlizeAdapter implements DatabaseAdapterInterface<Sequelize> {
     constructor(db: Sequelize) {
         this.db = db
     }
-    connect(mode: "development" | "production" | "test") {
+    async connect(mode: "development" | "production" | "test") {
         try {
-            this.db.authenticate()
+            await this.db.authenticate()
             if (mode === 'test') {
-                this.db.sync({ force: true })
+                await this.db.sync({ force: true })
             }
             if (mode === 'development') {
-                this.db.sync({ alter: true })
+                await this.db.sync({ alter: true })
             }
             console.log("Подключение успешно завершено")
         }
         catch (e) {
             console.log('Не подключились')
         }
-    }
-    defineModel() {
-
     }
 }

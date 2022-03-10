@@ -1,8 +1,7 @@
 import { DatabaseAdapterInterface } from "../interfaces/DatabaseAdapterInterface"
-import { Database } from "./database"
 
 export class Application<COREtype> {
-    // private _db: DatabaseAdapterInterface<DBtype> | null = null
+    private _db: DatabaseAdapterInterface<any> | null = null
     private _core: COREtype | null = null
     protected static singletone: any | null = null
     constructor() {
@@ -12,13 +11,13 @@ export class Application<COREtype> {
         }
         return Application.singletone
     }
-    // defineDataBase(db: Database<DBtype>) {
-    //     this._db = db.use() as DatabaseAdapterInterface<DBtype>
-    //     return this
-    // }
-    // get db() {
-    //     return this._db
-    // }
+    async defineDataBase(db: any) {
+        this._db = await db.use()
+        return this
+    }
+    get db() {
+        return this._db
+    }
     get core() {
         return this._core
     }

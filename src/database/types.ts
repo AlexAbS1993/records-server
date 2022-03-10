@@ -1,17 +1,17 @@
-import { Model } from "sequelize/types"
+import { Model, ModelCtor } from "sequelize/types"
 
 export type ModelsType = {
-    "User": Model<UserModelType>,
-    "Record": Model<RecordType>
+    "User": ModelCtor<Model<UserModelType>>,
+    "Record": ModelCtor<Model<RecordType>>
 }
 
 
-type UserModelType = {
+export type UserModelType = {
     id: number,
     name: string
 }
 
-type RecordType = {
+export type RecordType = {
     id: number,
     discription: string
 }
