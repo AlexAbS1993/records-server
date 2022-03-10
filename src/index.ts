@@ -3,11 +3,15 @@ import { Application } from './lib/app';
 import 'dotenv/config'
 import sequilizeORM from './database';
 import { SequlizeAdapter } from './lib/adapters/sequilize';
+import express from 'express'
 
-new Application<Sequelize, null>()
+
+export let app = new Application<Sequelize, Express.Application>()
+    .defineCore(express())
     .defineDataBase(sequilizeORM)
-    .db!.connect(process.env.NODE_ENV as "development" | "test")
 
+
+app.db!.connect(process.env.NODE_ENV as "development" | "test")
 
 //settings
 // Application.getDB<SequlizeAdapter>().db.define("User", {

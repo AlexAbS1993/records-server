@@ -12,6 +12,10 @@ export class Application<DBtype, COREtype> {
         }
         return Application.singletone
     }
+    defineCore(core: COREtype) {
+        this._core = core
+        return this
+    }
     defineDataBase(db: Database<DBtype>) {
         this._db = db.use() as DatabaseAdapterInterface<DBtype>
         return this
@@ -27,5 +31,8 @@ export class Application<DBtype, COREtype> {
             throw new Error("База данных не подключена")
         }
         return Application.singletone._db
+    }
+    static getInstance() {
+        return Application.singletone
     }
 }
