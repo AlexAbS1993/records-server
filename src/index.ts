@@ -4,9 +4,7 @@ import 'dotenv/config'
 import sequilizeORM from './database';
 import { SequlizeAdapter } from './lib/adapters/sequilize';
 
-new Application<Sequelize, null>()
-    .defineDataBase(sequilizeORM)
-    .db!.connect(process.env.NODE_ENV as "development" | "test")
+// new Application<>()
 
 
 //settings
