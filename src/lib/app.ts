@@ -1,8 +1,8 @@
 import { DatabaseAdapterInterface } from "../interfaces/DatabaseAdapterInterface"
 import { Database } from "./database"
 
-export class Application<DBtype, COREtype> {
-    private _db: DatabaseAdapterInterface<DBtype> | null = null
+export class Application<COREtype> {
+    // private _db: DatabaseAdapterInterface<DBtype> | null = null
     private _core: COREtype | null = null
     protected static singletone: any | null = null
     constructor() {
@@ -12,27 +12,20 @@ export class Application<DBtype, COREtype> {
         }
         return Application.singletone
     }
-    defineCore(core: COREtype) {
-        this._core = core
-        return this
-    }
-    defineDataBase(db: Database<DBtype>) {
-        this._db = db.use() as DatabaseAdapterInterface<DBtype>
-        return this
-    }
-    get db() {
-        return this._db
-    }
+    // defineDataBase(db: Database<DBtype>) {
+    //     this._db = db.use() as DatabaseAdapterInterface<DBtype>
+    //     return this
+    // }
+    // get db() {
+    //     return this._db
+    // }
     get core() {
         return this._core
     }
-    static getDB<AdapterImplementation>(): AdapterImplementation {
-        if (Application.singletone._db === null) {
-            throw new Error("База данных не подключена")
-        }
-        return Application.singletone._db
-    }
-    static getInstance() {
-        return Application.singletone
-    }
+    // static getDB<AdapterImplementation>(): AdapterImplementation {
+    //     if (Application.singletone._db === null) {
+    //         throw new Error("База данных не подключена")
+    //     }
+    //     return Application.singletone._db
+    // }
 }

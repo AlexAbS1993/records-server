@@ -6,12 +6,10 @@ import { SequlizeAdapter } from './lib/adapters/sequilize';
 import express from 'express'
 
 
-export let app = new Application<Sequelize, Express.Application>()
-    .defineCore(express())
-    .defineDataBase(sequilizeORM)
+// new Application<>()
 
 
-app.db!.connect(process.env.NODE_ENV as "development" | "test")
+// app.db!.connect(process.env.NODE_ENV as "development" | "test")
 
 //settings
 // Application.getDB<SequlizeAdapter>().db.define("User", {
