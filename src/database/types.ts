@@ -7,11 +7,11 @@ export type ModelsType = {
 
 
 export type UserModelType = {
-    id: number,
+    id?: number,
     name: string
 }
 
 export type RecordType = {
-    id: number,
+    id?: number,
     discription: string
 }

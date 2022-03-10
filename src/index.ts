@@ -7,16 +7,26 @@ import express from 'express'
 import { UserModelType } from './database/types';
 import { userDataGetterSequilize } from './database/selectors/getters/user.getter';
 
+async function start() {
+    let app = new Application()
+    let seqORM = await sequilizeORM()
+    await app.defineDataBase(seqORM)
+    await app.db!.connect('test')
+    await seqORM.models?.User.create({
+        name: "Alex"
+    })
+    let user = await seqORM.getData(new userDataGetterSequilize(seqORM.models!.User), {
+        attributes: ['name'],
+        where: {
+            name: "Alex"
+        }
+    }, 'one')
+    console.log(user.name)
+}
 
-new Application()
-    .defineDataBase(sequilizeORM)
-    // .db!.connect("test")
+start()
 
-// let user = sequilizeORM.getData(new userDataGetterSequilize(sequilizeORM.models!.User), {
-//     attributes: ['name']
-// }, 'one') as UserModelType
-// console.log(user)
-// app.db!.connect(process.env.NODE_ENV as "development" | "test")
+
 
 //settings
 // Application.getDB<SequlizeAdapter>().db.define("User", {
