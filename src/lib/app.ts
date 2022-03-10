@@ -1,5 +1,5 @@
-import { DatabaseAdapterInterface } from "./interfaces/DatabaseAdapterInterface"
-import { Database } from "./lib/database"
+import { DatabaseAdapterInterface } from "../interfaces/DatabaseAdapterInterface"
+import { Database } from "./database"
 
 export class Application<DBtype, COREtype> {
     private _db: DatabaseAdapterInterface<DBtype> | null = null
