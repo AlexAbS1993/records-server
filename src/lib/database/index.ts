@@ -1,5 +1,6 @@
 import { DBfiltersType, DBGetter } from "../../interfaces/DatabaseGetterInterface"
 import { DatabaseAdapterInterface } from "../../interfaces/DatabaseAdapterInterface"
+import { DBSetterInterface } from "interfaces/DatabaseSetterInterface"
 
 export class Database<ORM, Models> {
     protected static singletone: any | null = null
@@ -29,6 +30,16 @@ export class Database<ORM, Models> {
             }
             case 'one': {
                 return getter.getOne(filters)
+            }
+        }
+    }
+    setData(setter: DBSetterInterface, data: any, type: 'one' | 'many') {
+        switch (type) {
+            case "many": {
+                return setter.setMany(data)
+            }
+            case 'one': {
+                return setter.setOne(data)
             }
         }
     }

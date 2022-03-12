@@ -47,7 +47,7 @@ async function sequilizeORMFunc() {
 // }
 // )))
 
-// sequilizeORM.createModels({
+// const models = sequilizeORM.createModels({
 //     User: sequilizeORM.use()!.db.define<Model<UserModelType>>("User", {
 //         id: {
 //             type: DataTypes.INTEGER,
@@ -80,4 +80,4 @@ async function sequilizeORMFunc() {
 // }, 'one')
 
 
-export default sequilizeORMFunc
+export default sequilizeORMFunc()
