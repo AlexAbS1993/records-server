@@ -9,7 +9,7 @@ import { userDataGetterSequilize } from './database/selectors/getters/user.gette
 
 async function start() {
     let app = new Application()
-    let seqORM = await sequilizeORM()
+    let seqORM = await sequilizeORM
     await app.defineDataBase(seqORM)
     await app.db!.connect('test')
     await seqORM.models?.User.create({
@@ -25,7 +25,6 @@ async function start() {
 }
 
 start()
-
 
 
 //settings
