@@ -8,7 +8,10 @@ export type ModelsType = {
 
 export type UserModelType = {
     id?: number,
-    name: string
+    name: string,
+    password: string,
+    login: string,
+    mail: string
 }
 
 export type RecordType = {
