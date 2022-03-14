@@ -1,6 +1,9 @@
 import { DBfiltersType } from "../../../interfaces/DatabaseGetterInterface";
 
-export function dataBuilder(filters: DBfiltersType) {
+export function dataBuilder(filters?: DBfiltersType) {
+    if (!filters) {
+        return {}
+    }
     let dataFile: any = {}
     if (filters.where) {
         dataFile.where = {

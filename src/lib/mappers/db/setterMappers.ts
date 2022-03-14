@@ -1,5 +1,5 @@
-import { FromAppToUserDBMapperInterface } from "../../interfaces/Mappers/FromAppToUserDataDB.mapper.interface";
-import { UserModelType } from '../../database/types';
+import { FromAppToUserDBMapperInterface } from "../../../interfaces/Mappers/FromAppToUserDataDB.mapper.interface";
+import { UserModelType } from '../../../database/types';
 
 type requiredFieldsType = (keyof UserModelType)[]
 

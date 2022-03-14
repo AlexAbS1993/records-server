@@ -12,4 +12,25 @@ export class userDataGetterSequilize implements DBGetter {
     async getMany(filters: DBfiltersType) {
         return await this.model.findAll<Model<UserModelType>>(dataBuilder(filters))
     };
+    async getOneById(id: string, filters?: DBfiltersType) {
+        return await this.model.findOne<Model<UserModelType>>({
+            ...dataBuilder(filters),
+            where: {
+                id: id
+            }
+        })
+    }
+    async getOneByField(field: string | string[], values: any | any[], filters: DBfiltersType) {
+        if (typeof field === 'string') {
+            return await this.model.findOne<Model<UserModelType>>({
+                where: {
+                    ...dataBuilder(filters),
+                    [field]: values
+                }
+            })
+        }
+        else {
+
+        }
+    }
 }

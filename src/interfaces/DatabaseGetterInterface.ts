@@ -9,4 +9,6 @@ export type DBfiltersType = {
 export interface DBGetter {
     getOne: (filters: DBfiltersType) => any
     getMany: (filters: DBfiltersType) => any
+    getOneById: (id: string, filters: DBfiltersType) => any
+    getOneByField: (field: string | string[], values: any[], filters: DBfiltersType) => any
 }

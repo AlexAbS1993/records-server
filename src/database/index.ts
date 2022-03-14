@@ -1,17 +1,12 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
-import { SequlizeAdapter } from "../lib/adapters/sequilize";
+import SequlizeAdapter from './adapters/sequilizeAdapter'
 import { Database } from "../lib/database";
 import 'dotenv/config'
 import { ModelsType, RecordType, UserModelType } from "./types";
 import { userDataGetterSequilize } from './selectors/getters/user.getter';
 
 async function sequilizeORMFunc() {
-    const sequilizeORM = new Database<Sequelize, ModelsType>(new SequlizeAdapter(new Sequelize(
-        process.env.dbName as string, process.env.dbUser as string, process.env.dbPsw as string, {
-        host: 'localhost',
-        dialect: 'postgres'
-    }
-    )))
+    const sequilizeORM = new Database<Sequelize, ModelsType>(SequlizeAdapter)
     await sequilizeORM.createModels({
         User: sequilizeORM.use()!.db.define<Model<UserModelType>>("User", {
             id: {
